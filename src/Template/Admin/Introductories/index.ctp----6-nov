@@ -1,0 +1,128 @@
+<section class="content-header">
+    <h1>
+    Introductory Images   <?//= $this->Html->link(__('Add User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?>
+    <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Intoductory Screens</li>
+    </ol>
+</section>
+
+<section class="content">
+	<div class="row">
+        <div class="col-xs-12">
+        
+        <?php echo $this->Flash->render(); ?>
+        
+        <div class="box">
+
+            <div class="box-body">
+              <table  class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Image1</th>
+                  <th>Image2</th>
+                  <th>Image3</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+             <?= $this->Form->create($introductoryimage, ['id' => 'user-form', 'enctype' => 'multipart/form-data']) ?>
+              <div class="box-body">
+              	<div class="form-group">
+                <img src="<?php echo ($introductoryimage['image1'] != '') ? $this->request->webroot.'images/introductoryimages/'.$introductoryimage['image1'] : $this->request->webroot.'images/introductoryimages/noimage.png'; ?>" class="previewHolder1" style="width: 135px;"/>   
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('image1', ['id' => 'image1', 'type' => 'file', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                <label>Description1</label>
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('des1', ['id' => 'des1', 'type' => 'textarea', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                </td>
+                   <td>
+                <img src="<?php echo ($introductoryimage['image2'] != '') ? $this->request->webroot.'images/introductoryimages/'.$introductoryimage['image2'] : $this->request->webroot.'images/introductoryimages/noimage.png'; ?>" class="previewHolder2" style="width: 135px;"/>   
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('image2', ['id' => 'image2', 'type' => 'file', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                <label>Description2</label>
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('des2', ['id' => 'des2', 'type' => 'textarea', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                </td>
+                   <td>
+                <img src="<?php echo ($introductoryimage['image3'] != '') ? $this->request->webroot.'images/introductoryimages/'.$introductoryimage['image3'] : $this->request->webroot.'images/introductoryimages/noimage.png'; ?>" class="previewHolder3" style="width: 135px;"/>   
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('image3', ['id' => 'image3', 'type' => 'file', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                <label>Description3</label>
+                <div class="form-group">
+                 <!--<label for="exampleInputEmail1">Image</label>-->
+                 <?php echo $this->Form->control('des3', ['id' => 'des3', 'type' => 'textarea', 'class' => 'form-control', 'label' => false]); ?>
+                </div> 
+                 </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+              </div>
+                </td>
+                </tr>
+                </tbody>
+              
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+    </div>
+</section>       
+
+<script>
+    function readURL1(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('.previewHolder1').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+   function readURL2(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('.previewHolder2').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+   function readURL3(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('.previewHolder3').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#image1").change(function() {
+  readURL1(this);
+});
+$("#image2").change(function() {
+  readURL2(this);
+});
+$("#image3").change(function() {
+  readURL3(this);
+});
+</script>
